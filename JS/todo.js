@@ -17,5 +17,5 @@ function addTask(){
 
     li.append(deleteBtn)
     document.getElementById('taskContainer').append(li)
-    input.value =''
+    input.value = ''
 }
