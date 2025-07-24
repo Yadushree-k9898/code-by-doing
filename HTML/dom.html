@@ -1,0 +1,25 @@
+<p id="text">Original</p>
+
+<script>
+    document.getElementById("text").textContent = "Changed";
+
+    document.getElementById('text').textContent += " + Appended"
+
+ document.getElementById('text').innerHTML = "<strong>Bold!</strong>"
+
+ document.getElementById('text').textContent = ''
+
+console.log(document.getElementById('text').innerText)
+
+let name = 'yadu';
+document.getElementById('text').textContent = `Hi ${name}`
+
+
+document.getElementById('text').textContent = document.getElementById('text').textContent.replace('Hi', 'Hello')
+
+
+if(document.getElementById('text').textContent === ""){
+    document.getElementById("text").textContent = "Default message"
+}
+
+</script>
