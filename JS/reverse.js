@@ -29,3 +29,81 @@ function reversedNumber(num){
 }
 
 console.log(reversedNumber(6789000));
+
+
+
+function reverse(x){
+    let rev = 0;
+    let num = Math.abs(x);
+
+
+    while(num > 0){
+        let digit = num % 10;
+        rev = rev * 10 + digit
+        num = Math.floor(num / 10)
+    }
+
+    if(rev > 2 ** 31 - 1) return 0;
+
+    return x < 0 ? -rev : rev
+}
+
+console.log(reverse(12345));
+
+
+
+function reverseN(x){
+    let rev = 0;
+    let num = Math.abs(x);
+
+    while(num > 0){
+        let digit = num % 10;
+        rev = rev * 10 + digit;
+        num = Math.floor(num / 10);
+    }
+
+    if( rev > 2 ** 31 - 1) return 0;
+
+    return x < 0 ? -rev : rev
+}
+
+
+console.log(reverseN(-12345));
+
+
+function reverseNum(x){
+    let rev = 0;
+    let num = Math.abs(x);
+
+    while(num > 0){
+        let digit = num % 10;
+        rev = rev * 10 + digit
+        num = Math.floor(num / 10)
+    }
+
+    if(rev > 2 ** 31 -1) return 0;
+
+    return x < 0 ? -rev : rev
+}
+
+
+console.log(reverseNum(12345));
+
+
+function reverseDigits2(x){
+    let rev = 0;
+    let num = Math.abs(x);
+
+    while(num > 0){
+        let digit = num % 10;
+        rev = rev * 10 + digit;
+        num = Math.floor(num/ 10)
+    }
+
+    if( rev > 2 ** 31 -1) return 0;
+
+    return x < 0 ? -rev : rev
+}
+
+console.log(reverseDigits2(-12345));
+
