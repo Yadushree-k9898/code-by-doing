@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <h1> Welcome</h1>
+    <h1>To</h1>
+    <h1>Most</h1>
+    <h1>Exiting</h1>
+    <h1>Art of work</h1>
+    <ul>
+        <li>Item 1</li>
+        <li>Item 2</li>
+    </ul>
+   <button onclick="numberList()">Add Numbers</button>
+   <div>1</div>
+   <div>1</div>
+   <div>1</div>
+   <div>1</div>
+   <div>1</div>
+
+   <button onclick="changeColor()">Change</button>
+
+   <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non incidunt tempora eveniet consequuntur dolorum quod? Adipisci laborum, ab, sit natus dolore ipsam neque ut corrupti nobis odio facilis dolorum eaque labore. Alias id aperiam animi dicta sunt labore eos harum a deleniti ut consequatur doloremque odio voluptate possimus sapiente magnam asperiores obcaecati sit velit impedit fuga eligendi, maiores dolores facilis. Ipsam corporis nostrum ducimus debitis a! Repellat incidunt sequi nisi eveniet quod omnis quia repudiandae velit nostrum! Quidem ratione dolorem et animi suscipit aut!</p>
+
+   <button onclick="countDivs()">Count Divs</button>
+   <button onclick="uppercase()">   Uppercase</button>
+   <button onclick="changeFont()">Change Font</button>
+
+   <script>
+    function numberList(){
+        const items = document.getElementsByTagName('li');
+        for(let i = 0; i <items.length; i++){
+            items[i].innerText = `Item ${i + 1}`
+        }
+    }
+
+
+    function changeColor(){
+        const items = document.getElementsByTagName('h1')
+        for(let i = 0; i <items.length; i++){
+            items[i].style.color = 'orange'
+        }
+    }
+
+    function countDivs(){
+        const divs = documnet.getElementsByTagName('div');
+        alert(`There are ${divs.length} divs in this document`);
+    }
+
+
+    function uppercase(){
+        const paragraphs = document.getElementsByTagName('p');
+        for(let p of paragraphs){
+            p.innerText = p.innerText.toUpperCase()
+        }
+    }
+    
+    function changeFont(){
+        const all = document.getElementsByTagName('*');
+        for(let el of all){
+            el.style.fontFamily = 'Arial, sans-serif'
+        }
+    }
+   </script>
+</body>
+</html>

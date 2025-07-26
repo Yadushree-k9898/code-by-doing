@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+   <h1>Show Names 😁</h1>
+   <input type="text" id="nameInput" placeholder="Enter your name..."> 
+   <button onclick="showName()">Show</button>
+   <p id="output"></p>
+
+   <p id="emoji">Feeling: </p>
+   <button onclick="addEmoji()">Add Emoji</button>
+
+   <button onclick="disableMe()" id="myBtn">Disable</button>
+
+   <p id="secretMeg" style="display: none;">Yoy found the secret</p>
+   <button onclick="toggleMsg()">Show/Hide</button>
+
+   <script>
+        function showName(){
+            const name = document.getElementById('nameInput').value;
+            document.getElementById('output').textContent = `Hello there, ${name}`
+        }
+
+
+        function addEmoji(){
+            const element = document.getElementById('emoji');
+            element.innerText += '😙😚☺🙂🤗🤩🤔🤨😮😥😣😏🙄😶😯😯😐😑😪😪😫😫🥱😴😴😌✝❤💘💫'
+        }
+
+
+        function disableMe(){
+            const btn = document.getElementById('myBtn');
+            btn.disabled = true;
+            btn.textContent = 'Disabled'
+        }
+
+
+        function toggleMsg(){
+            const msg = document.getElementById('secretMeg')
+            if(msg.style.display === 'none'){
+                msg.style.display = 'block'
+            } else{
+                msg.style.displayn= 'none'
+            }
+        }
+
+
+
+   </script>
+</body>
+</html>

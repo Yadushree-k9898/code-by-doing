@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="note1">Note 1</div>
+    <div class="note1">Note 2</div>
+
+    <div class="note">Note A</div>
+    <div class="note">Note B</div>
+    <div class="note">Note C</div>
+    <button onclick="appendIndex()">Append Index</button>
+    <button onclick="highl()">HighLight</button>
+    <button onclick="changeColor()">ChangeColor</button>
+
+    <button onclick="countNotes()">Count Notes</button>
+    <p id="countDisplay"></p>
+
+    <button onclick="removeNotes()">Remove notes</button>
+
+    <button onclick="hideNotes()">Hide All</button>
+
+
+    <button onclick="addBorder()">Add Border</button>
+
+    <button onclick="convertAndMap()">Convert + Map</button>
+
+    <script>
+        function highl(){
+            const notes = document.getElementsByClassName('note1');
+            for(let note of notes){
+                note.style.backgroundColor = 'yellow';
+                note.style.color = 'red';
+            }
+        }
+
+
+        function appendIndex(){
+            const notes = document.getElementsByClassName('note');
+            for(let i =0; i < notes.length; i++){
+                notes[i].innerText += ` (${i})`
+            }
+        }
+
+        function changeColor(){
+            const notes = document.getElementsByClassName('note');
+            for(let note of notes){
+                note.style.color = 'blue'
+            }
+        }
+
+        function countNotes(){
+            const notes = document.getElementsByClassName('note');
+            document.getElementById('countDisplay').innerText = "Total Notes: " + notes.length;
+
+        }
+
+        function removeNotes(){
+            const notes = document.getElementsByClassName('note');
+            while (notes.length > 0){
+                notes[0].remove()
+            } 
+
+
+        }
+
+        function hideNotes(){
+            const notes = document.getElementsByClassName('note');
+            for(let note of notes){
+                note.style.display = 'none'
+            }
+        }
+
+        function addBorder(){
+            const notes = document.getElementsByClassName('note');
+            for(let note of notes){
+                note.style.border = "2px solid red";
+                note.style.padding = "15px"
+            }
+        }
+
+         function convertAndMap(){
+            const notes = document.getElementsByClassName('note');
+            const notesArray = Array.from(notes);
+            notesArray.map((note, i)=>{
+                note.innerText = `Mapped Note ${i+1}`
+            })
+         }
+    </script>
+</body>
+</html>
