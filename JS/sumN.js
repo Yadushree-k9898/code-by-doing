@@ -29,3 +29,65 @@ function sumN(n){
 }
 
 console.log(5)
+
+
+function sumN(n){
+    return (n * ( n + 1)) / 2;
+}
+
+console.log(sumN(10));
+
+
+
+function sumN(n){
+    return (n * (n+1)) / 2
+}
+
+
+console.log(sumN(13));
+
+
+function sumN(n){
+    return (n * (n + 1)) / 2
+}
+
+console.log(sumN(12));
+
+
+function SumIterartive(n){
+    let sum = 0
+    for(let i = 1; i <=n ; i++){
+        sum += i
+    }
+    return sum
+}
+
+console.log(SumIterartive(10));
+
+
+
+function sumIt(n){
+    let sum = 0;
+
+    for(let i = 1; i <= n; i++){
+        sum += i;
+    }
+    return sum
+}
+
+
+console.log(sumIt(9));
+
+
+
+function sumI(n){
+    let sum = 0;
+
+    for(let i = 1; i <= n; i++){
+        sum += i
+    }
+    return sum
+}
+
+
+console.log(sumI(7));

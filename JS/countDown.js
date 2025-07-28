@@ -43,3 +43,43 @@ function countDown(n){
 }
 
 console.log(countDown(15))
+
+
+function countDownTail(n){
+    if(n <= 0){
+        console.log("Done!");
+        return;
+    }
+    console.log(n);
+    return countDownTail(n -1)
+}
+
+console.log(countDownTail(5))
+
+
+function countDownTail(n){
+    if(n <= 0){
+        console.log("Done!");
+        return;
+    }
+    console.log(n);
+    countDownTail( n -1);
+
+}
+
+console.log(countDownTail(7))
+
+
+
+
+function countDownTail(n){
+    if(n <= 0){
+        console.log("Done!");
+        return
+    }
+    console.log(n);
+    return countDownTail( n - 1)
+}
+
+
+console.log(countDownTail(7))
