@@ -81,3 +81,31 @@ console.log(sumArrayReduce([10, 2, 3]));
 const sumArray1 = arr => arr.reduce((acc, curr) => acc+curr, 0)
 
 console.log(sumArray1([1, 2, 3]));
+
+
+
+function sumArray2(arr, i = 0){
+    if( i === arr.length) return 0;
+    return arr[i] +sumArray2(arr, i + 1)
+}
+
+
+console.log(sumArray2([1, 2, 3]))
+
+
+function sumArr(arr, i = 0){
+    if(i === arr.length) return 0;
+
+    return arr[i] + sumArr(arr, i+1)
+}
+
+
+console.log(sumArr([2, 3, 4, 5]))
+
+
+function sumArra(arr, i = 0){
+    if(i === arr.length) return 0;
+    return arr[i] + sumArra(arr, i+1)
+}
+
+console.log(sumArra([1, 3, 5]))

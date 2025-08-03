@@ -107,3 +107,29 @@ function reverseDigits2(x){
 
 console.log(reverseDigits2(-12345));
 
+
+
+
+function rv(str){
+    if(str === "") return "";
+    return rv(str.slice(1)) + str[0]
+}
+
+console.log(rv("yadu"))
+
+
+function r(str){
+    if(str === "") return "";
+    return r(str.slice(1)) + str[0]
+}
+
+console.log(r("yadushree"));
+
+
+
+function rsv(str){
+    if(str === "") return "";
+    return rsv(str.slice(1)) + str[0]
+}
+
+console.log(rsv("engineer"))
