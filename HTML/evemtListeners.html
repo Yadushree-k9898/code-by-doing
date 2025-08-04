@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 id="heading">Event Listeners in Javascript</h1>
+    <button id="btn">Click Me</button>
+    <br/>
+    <br/>
+    <br/>
+    <div id="box">I am the box</div>
+    <input type="text" id="input" placeholder="Write here">
+
+    <script>
+        document.querySelector('#btn').addEventListener('click', ()=>{
+            alert("Button clicked")
+        })
+
+        document.querySelector('#box').addEventListener('dbclick', () =>{
+            box.style.backgroundColor = 'skyblue';
+        });
+
+        box.addEventListener('mouseenter', ()=>{
+            box.textContent = 'Mouse is over!'
+        })
+
+        box.addEventListener('mousemove', (e) =>{
+            console.log(`X: ${e.clientX}, Y: ${e.clientY}`)
+        })
+
+
+        document.addEventListener('keyup', (e) => {
+            console.log('Key released:', e.key)
+        })
+
+
+        document.addEventListener('keydown', (e) =>{
+            console.log('Key down:', e.key)
+        })
+
+        input.addEventListener('input', (e) =>{
+            heading.textContent = e.target.value;
+        })
+
+        form.addEventListener('submit', (e) =>{
+            e.preventDefault();
+            console.log("Form submitted")
+        });
+
+        dropdown.addEventListener('change', (e) =>{
+            console.log("Selected:", e.target.value)
+        })
+
+
+        checkbox.addEventListener('change', (e)=>{
+            console.log("Checked?", e.target.checked)
+        });
+
+        input.addEventListener('focus', ()=>{
+            console.log("Focused")
+        })
+
+        input.addEventListener('blur', ()=>console.log(Blurred))
+
+        window.addEventListener('resize', ()=>{
+            console.log("Width:", window.innerWidth)
+        })
+
+        window.addEventListener('scroll', ()=>{
+            console.log("Scroll position:", window.scrollY)
+        })
+
+        window.addEventListener('scroll', ()=>{
+            console.log("Scroll position", window.scrollX)
+        });
+
+        window.addEventListener('load', ()=>{
+            console.log("Page loaded")
+        })
+
+        btn.addEventListener('click', ()=>{
+            box.classList.toggle('active')
+        })
+
+        fileInput.addEventListener('change', (e) =>{
+            const img = document.querySelector('img');
+            img.src = URL.createObjectURL(e.target.files[0])
+        })
+
+
+        let timeout;
+        input.addEventListener('input', (e) =>{
+            clearTimeout(timeout);
+            timeout = setTimeout(()=>{
+                console.log('Debounced input:', e.target.value)
+            }, 300)
+        });
+
+        toggleBtn.addEventListener('click', (e) =>{
+            if(e.target.tagName === 'LI'){
+                console.log("Clicked:", e.target.value)
+            }
+        })
+    </script>
+</body>
+</html>
+
