@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Hello javascript</h1>
+
+    <script>
+        console.log(this);
+
+        function show(){
+            console.log(this)
+        }
+        show();
+
+
+        const arrowFn = () =>{
+            console.log(this)
+        }
+        arrowFn()
+
+       const user = {
+        name:"Yadushree",
+        age:23,
+        greet(){
+            console.log(this.name)
+        },
+        sayHii(){
+            console.log("Hey there,", this.name , "You are", this.age, "Years old")
+        }
+       }
+       user.greet()
+       user.sayHii()
+
+
+       const user2 = {
+        name: "Yadushree",
+        greet(){
+            const inner = () =>{
+                console.log(this.name)
+            }
+            inner()
+        }
+       }
+       user2.greet()
+    </script>
+</body>
+</html>

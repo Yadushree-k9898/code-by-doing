@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Call Bind Apply</h1>
+
+    <script>
+        function greet(){
+            console.log(`Hello, ${this.name}`)
+        }
+
+        const person = {name: 'Yadushree'}
+        greet.call(person);
+
+
+        function intro(lang1, lang2){
+            console.log(`${this.name} knows ${lang1} and ${lang2}`)
+        }
+
+        const dev = {name: 'Frontend dev'}
+        intro.apply(dev, ["Python", "JS"])
+
+
+        function sayAge(){
+            console.log(`Age is ${this.age}`)
+        }
+
+        const student = {age: 23}
+        const boundFn = sayAge.bind(student);
+        boundFn();
+    </script>
+</body>
+</html>
