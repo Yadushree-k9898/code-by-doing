@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Typing speed test</h1>
+
+    <p id="sentence">Loading...</p>
+    <textarea id="input" cols="50" rows="10" placeholder="Type here to test your speed">WPM: 0</textarea>
+    <p id="result"></p>
+    <button onclick="resetTest()">Reset</button>
+
+    <script>
+        const sentences = [
+        "JavaScript is a powerful programming language.",
+      "Typing speed is measured in words per minute.",
+      "Practice regularly to improve your skills.",
+      "Frontend development is fun and creative.",
+      "Asynchronous code is handled using promises."
+        ];
+
+        const sentenceElement = document.getElementById('sentence');
+        const inputElement = document.getElementById('input');
+        const resultElement = document.getElementById('result');
+
+        let startTime, interval, currentSentence;
+
+        function startTimer(){
+            if(!startTime){
+                startTime = new Date().getTime();
+                interval = setInterval(updateWPM, 1000);
+            }
+        }
+
+        function updateWPM(){
+            const wordsTyped = inputElement.value.trim().split(/\s+/).length;
+            const timePassed = (new Date().getTime() - startTime) / 60000;
+            const wpm = Math.round(wordsTyped/ timePassed);
+            resultElement.textContent = `WPM ${wpm}`
+        }
+
+        function resetTest(){
+            clearInterval(interval);
+            startTime = null;
+            currentSentence = sentences[Math.floor(Math.random() * sentences.length)];
+            sentenceElement.textContent = currentSentence;
+            inputElement.value = '';
+            resultElement.textContent = 'WPM: 0'
+        }
+
+        inputElement.addEventListener('input', startTimer)
+
+
+        resetTest()
+    </script>
+</body>
+</html>
