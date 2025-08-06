@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        alert("From HEAD: " +document.body)
+    </script>
+</head>
+<body>
+    <h1 id="dom">DOM Tree</h1>
+    <script>
+
+        alert("From BODY: " + document.body)
+        function sayHi(){
+            console.log("Hello")
+        }
+        window.sayHi()
+
+        alert(window.innerWidth)
+
+        document.getElementById('dom').style.backgroundColor = 'red'
+        document.getElementById('dom').style.color = 'white'
+        document.body.style.backgroundColor = 'black'
+        setTimeout(()=> document.body.style.background = '', 3000)
+
+
+       alert(location.href)
+       if(confirm("Go to wikipedia?")){
+        location.href = "https://wikipedia.org"
+       }
+    </script>
+</body>
+</html>
