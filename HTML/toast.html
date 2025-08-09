@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Toast Notification</h1>
+    <button id="successBtn">Success</button>
+    <button id="errorBtn">Error</button>
+    <button id="infoBtn">Info</button>
+    <button id="warnBtn">Warn</button>
+
+    <script>
+        function showToast(message){
+            const toast = document.createElement('div');
+            toast.textContent = message;
+            toast.style.position = 'fixed';
+            toast.style.padding= '10px';
+            toast.style.background='lightgray';
+            toast.style.bottom = '10px';
+            toast.style.right='10px'
+            toast.style.border='10px solid gray';
+
+            document.body.appendChild(toast);
+
+            setTimeout(()=> toast.remove(), 3000)
+
+        }
+
+        document.getElementById('successBtn').onclick = () => showToast("Success")
+        document.getElementById('errorBtn').onclick = () => showToast("Error")
+        document.getElementById('infoBtn').onclick = () => showToast("Info")
+        document.getElementById('warnBtn').onclick = () => showToast("Warn")
+    </script>
+</body>
+</html>

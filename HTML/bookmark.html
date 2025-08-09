@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>BookMark App</h1>
+    <input type="url" id="urlInput" placeholder="Enter URL" required>
+    <button id="addBookMark">Add</button>
+    <button id="deleteAll">Delete</button>
+
+    <ul id="bookmarkList"></ul>
+
+    <script>
+        const urlInput = document.getElementById('urlInput');
+        const addbookmarkButton = document.getElementById('addBookMark');
+        const deleteAll = document.getElementById('deleteAll');
+        const bookmarklist = document.getElementById('bookmarkList');
+        
+        function isValidURL(url){
+            return url.startsWith("http://") || url.startsWith("https://");
+        }
+        addbookmarkButton.onclick = () =>{
+            const url = urlInput.value.trim();
+            if(!isValidURL(url)){
+                alert("Please enter a valid URL (http:// ot https://)")
+                return
+            }
+            const li = document.createElement('li');
+            li.innerHTML = `
+            <a href="${url}" target="_blank">${url}</a>
+            <button class="edit">Edit</button>
+            <button class="delete">Delete</button>
+            `;
+
+            li.querySelector('.edit').onclick = () =>{
+                const newURL = prompt("Edit URL:", url);
+                if(newURL && isValidURL(url)){
+                    li.querySelector("a").href = newURL;
+                li.querySelector("a").textContent = newURL;
+                            }
+            }
+            li.querySelector('.delete').onclick = () =>{
+                li.remove()
+            }
+
+            bookmarklist.appendChild(li);
+            urlInput.value = '';
+
+        }
+        deleteAll.onclick = () =>{
+            bookmarklist.innerHTML = ''
+        }
+    </script>
+</body>
+</html>
