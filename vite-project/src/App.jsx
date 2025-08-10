@@ -1,4 +1,6 @@
 
+import CoinFlipping from './components/coinFlipping'
+import Quiz from './components/quiz'
 import Quotes from './components/quotes'
 import Todo from './components/todo'
 import UseEffectExamples from './components/useEffectExamples'
@@ -12,7 +14,11 @@ const App = () => {
       {/* <UseEffectExamples/> */}
       {/* <UseStateExamples/> */}
       {/* <Todo/> */}
-      <Quotes/>
+      {/* <Quotes/>
+       */}
+       {/* <Quiz/>
+        */}
+        <CoinFlipping/>
     </>
   )
 }

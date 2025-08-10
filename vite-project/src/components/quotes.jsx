@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 
 const Quotes = () => {
     const quotes = [
-         "Believe you can and you're halfway there.",
+    "Believe you can and you're halfway there.",
     "Your time is limited, so don’t waste it.",
     "The harder you work, the luckier you get.",
     "Do what you can with what you have.",
