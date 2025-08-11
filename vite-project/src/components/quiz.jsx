@@ -65,7 +65,6 @@ const Quiz = () => {
         if(option === questions[current].answer){
             setScore(score + 1)
         }
-
         const next = current + 1;
         if(next < questions.length){
             setCurrent(next)
@@ -73,7 +72,6 @@ const Quiz = () => {
             setFinished(true)
         }
     }
-
   return (
     <div>
         <h2>Quiz App</h2>
