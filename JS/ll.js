@@ -21,7 +21,7 @@ function printFrom(head){
     console.log(out || "Empty list");
     
 }
-//printFrom(head) 
+
 
 class Node1{
     constructor(){
