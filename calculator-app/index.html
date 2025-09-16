@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Simple Calculator</h1>
+
+    <input type="text" id="expressionInput" placeholder="e.g. 2 +3">
+    <button onclick="calculate()">Calculate</button>
+
+    <h2>Result: <span id="resultDisplay">0</span></h2>
+
+    <h2>History</h2>
+    <ul id="historyList"></ul>
+
+    <script>
+        const API_URL= 'http://localhost:3000'
+
+        function fetchHistory(){
+            fetch(`${API_URL}/history`)
+                .then(res => res.json())
+                .then(history => {
+                    const list = document.getElementById('historyList');
+                    list.innerHTML = ''
+                    history.forEach(entry => {
+                        const li = document.createElement('li')
+                        li.textContent = `${entry.expression} = ${entry.result}`;
+                        list.appendChild(li)
+                    })
+                })
+        }
+
+        function calculate(){
+            const expr = document.getElementById('expressionInput').value.trim()
+            if(!expr) return alert('Please enter an expression')
+
+            let result;
+            try{
+                result = eval(expr)
+            }catch(e){
+                alert('Invalid expression')
+                return
+            }
+
+            document.getElementById('resultDisplay').textContent = result
+
+            fetch(`${API_URL}/calculate`, {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({expression: expr, result})
+            }).then(() => fetchHistory())
+
+        }
+        fetchHistory()
+    </script>
+</body>
+</html>

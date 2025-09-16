@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>To-Do List App</title>
+    <style>
+        body { font-family: Arial; margin: 30px; }
+        input, button { padding: 10px; margin: 5px; }
+    </style>
+</head>
+
+<body>
+
+    <h1>To-Do List</h1>
+
+    <input type="text" id="taskInput" placeholder="New task" />
+    <button onclick="addTodo()">Add Task</button>
+
+    <ul id="todoList"></ul>
+
+    <script>
+        const API_URL = 'http://localhost:3000/todos';
+
+        function fetchTodos() {
+            fetch(API_URL)
+                .then(res => res.json())
+                .then(todos => {
+                    const list = document.getElementById('todoList');
+                    list.innerHTML = '';
+                    todos.forEach(todo => {
+                        const li = document.createElement('li');
+                        li.textContent = todo.task;
+
+                        const delBtn = document.createElement('button');
+                        delBtn.textContent = 'Delete';
+                        delBtn.style.marginLeft = '20px';
+                        delBtn.onclick = () => deleteTodo(todo.id);
+
+                        li.appendChild(delBtn);
+                        list.appendChild(li);
+                    });
+                });
+        }
+
+        function addTodo() {
+            const task = document.getElementById('taskInput').value.trim();
+            if (!task) return alert('Please type a task.');
+
+            fetch(API_URL, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ task })
+            })
+            .then(() => {
+                document.getElementById('taskInput').value = '';
+                fetchTodos();
+            });
+        }
+
+        function deleteTodo(id) {
+            fetch(`${API_URL}/${id}`, { method: 'DELETE' })
+                .then(() => fetchTodos());
+        }
+
+        fetchTodos();
+    </script>
+
+</body>
+
+</html>
