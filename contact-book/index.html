@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Contact Book</h1>
+
+    <input type="text" id="nameInput" placeholder="Name" required>
+    <input type="text" id="phoneInput" placeholder="Phone" required>
+    <input type="text" id="emailInput" placeholder="Email" required>
+    <button onclick="addContact()">Add Contact</button>
+
+    <ul id="contactsList"></ul>
+
+    <script>
+        const API_URL = 'http://localhost:3000/contacts'
+
+        function fetchContacts(){
+            fetch(API_URL)
+                .then(res => res.json())
+                .then(contacts => {
+                    const list = document.getElementById('contactsList');
+                    list.innerHTML = '';
+                    contacts.forEach(contacts => {
+                        const li = document.createElement('li');
+                        li.innerHTML = `<strong>${contact.name}</strong> - ${contact.phone} - ${contact.email}`;
+
+                        const delBtn = document.createElement('button');
+                        delBtn.textContent = 'Delete'
+                        delBtn.style.marginLeft = '20px';
+                        delBtn.onclick = () => deleteContact(contact.id);
+
+                        li.appendChild(delBtn)
+                        list.appendChild(li)
+                    })
+                })
+        }
+
+        function addContacts(){
+            const name = document.getElementById('nameInput').value.trim();
+            const phone = document.getElementById('phoneInput').value.trim();
+            const email = document.getElementById('emailInput').value.trim();
+
+            if(!name || !phone || !email){
+                alert('All fields are required')
+                return
+            }
+
+            fecth(API_URL, {
+                method:'POST',
+                headers: {'Content-Type': 'application/json'},
+                body:JSON.stringify({name, phone, email})
+            })
+            .then(() => {
+                document.getElementById('nameInput').value = '';
+                document.getElementById('phoneInput').value = '';
+                document.getElementById('emailInput').value = ''
+            })
+        }
+
+        function deleteContact(id){
+            fetch(`${API_URL}/${id}`, {method: 'DELETE'})
+                .then(() => fetchContacts())
+        }
+        fetchContacts()
+    </script>
+</body>
+</html>
