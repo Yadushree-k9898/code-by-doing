@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Notes App</h1>
+    <input type="text" id="noteInput" placeholder="Enter a text here..."/>
+
+    <ul id="notesList"></ul>
+
+    <script>
+        const API_URL= "http://localhost:3000/notes"
+
+        function fetchNotes(){
+            fetch(API_URL)
+                .then(response => response.json())
+                .then(notes => {
+                    const list = document.getElementById('noteList')
+                    list.innerHTML = ''
+                    notes.forEach(note => {
+                        const li = document.createElement('li');
+                        li.innerText = note.content
+                        const delBtn = document.createElement('delete')
+                        delBtn.innerText = 'Delete'
+                        delBtn.onclick = () => delete(note.id)
+                        li.appendChild(delBtn)
+                        list.appendChild(li)
+                    })
+                })
+
+        }
+
+        function addNote(){
+            const content = document.getElementById('noteInput').value;
+            fetch(API_URL, {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({content})
+            })
+            .then(() => {
+                document.getElementById('noteInput').value = '';
+                fetchNotes()
+            })
+        }
+
+        function deleteNote(id){
+            fetch(`${API_URL}/${id}`, {method: 'DELETE'})
+                .then(() => fetchNotes())
+        }
+
+        fetchNotes()
+    </script>
+</body>
+</html>
