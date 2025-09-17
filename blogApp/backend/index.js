@@ -1,0 +1,11 @@
+const express = require('express')
+const connectDB = require('./config/db')
+const logger = require('./middleware/logger')
+const postRoutes = require('./routes/postRoutes')
+
+const app = express()
+connectDB()
+app.use(express.json())
+app.use(logger)
+app.use('/api/posts', postRoutes)
+app.listen(3000, () => console.log('Server running'))
