@@ -22,7 +22,8 @@ const BookSchema = new Schema(
         },
         genre: [{
             type:Schema.Types.ObjectId,
-            ref: "Genre"
+            ref: "Genre",
+            required:true
         }]
     }, {
         timestamps: true

@@ -12,15 +12,15 @@ const BookInstanceSchema = new Schema(
         },
         imprint: {type: String, required: true},
         status:{
-            types: String,
-            required: true,
+            type: String,
             enum: [
                 "Available",
                 "Maintenance",
                 "Loaded",
                 "Reserved"
             ],
-            default: "Maintenance"
+            default: "Maintenance",
+            required: true,
         },
         due_back: {
             type:Date,

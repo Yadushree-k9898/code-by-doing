@@ -1,10 +1,10 @@
 const express = require('express')
 const dotenv = require('dotenv')
-const connectDB = require('./config/db')
+const connectDB = require('./backend/config/db')
 
-const indexRoutes = require('./routes/index')
-const catalogRoutes = require('./routes/catalog')
-const userRoutes = require('./routes/users')
+const indexRoutes = require('./backend/routes/index')
+const catalogRoutes = require('./backend/routes/catalog')
+const userRoutes = require('./backend/routes/users')
 
 dotenv.config()
 connectDB()
@@ -22,6 +22,7 @@ app.use((err, req, res, next) =>{
 })
 
 const PORT = process.env.PORT || 3000;
+
 
 app.listen(PORT, () =>{
     console.log(`Server running on port ${PORT}`)
